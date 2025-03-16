@@ -13,7 +13,6 @@ int main()
     std::cout << "\nc\n" << LP_data.c << std::endl;
 
 	Primal_Dual_MPC(LP_data, state, params);
-
     std::cout << "\nx\n" << state.x << std::endl;
 
 

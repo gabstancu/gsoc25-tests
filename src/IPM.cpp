@@ -133,8 +133,8 @@ void predictor_step (LP LP_data, State &state, Parameters &params)
     state.Dx_p = state.S_inv * (state.rc - state.X * state.Ds_p);
 
     std::cout << "\nDy_p:\n" << state.Dy_p << std::endl; 
-    std::cout << "Ds_p:\n" << state.Ds_p << std::endl;
-    std::cout << "Dx_p:\n" << state.Dx_p << std::endl;
+    std::cout << "\nDs_p:\n" << state.Ds_p << std::endl;
+    std::cout << "\nDx_p:\n" << state.Dx_p << std::endl;
 
 
     // calculate alpha for both the primal and the dual problem
@@ -172,15 +172,15 @@ void corrector_step (LP LP_data, State &state, Parameters &params)
     state.rc = state.rc - params.sigma * params.mu * state.e + state.Dx_p.asDiagonal() * state.Ds_p;
     state.rhs = state.rp + LP_data.A * state.S_inv * (-state.rc + state.X * state.rd);
     std::cout << "\nrc:\n" << state.rc << std::endl; 
-    std::cout << "rhs:\n" << state.rhs << std::endl;
+    std::cout << "\nrhs:\n" << state.rhs << std::endl;
 
     state.Dy = state.M_inv * state.rhs;
     state.Ds = state.rd - LP_data.A_T * state.Dy;
     state.Dx = state.S_inv * (state.rc - state.X * state.Ds);
 
     std::cout << "\nDy:\n" << state.Dy << std::endl; 
-    std::cout << "Ds:\n" << state.Ds << std::endl;
-    std::cout << "Dx:\n" << state.Dx << std::endl;
+    std::cout << "\nDs:\n" << state.Ds << std::endl;
+    std::cout << "\nDx:\n" << state.Dx << std::endl;
 
     // calc. primal and dual steps
     params.eta = std::max(0.995, 1 - params.mu);
@@ -230,8 +230,8 @@ void Primal_Dual_MPC (LP LP_data, State &state, Parameters &params)
         state.rc = state.X * state.s;
 
         std::cout << "\nrd:\n" << state.rd << std::endl; 
-        std::cout << "rp:\n" << state.rp << std::endl;
-        std::cout << "rc:\n" << state.rc << std::endl;
+        std::cout << "\nrp:\n" << state.rp << std::endl;
+        std::cout << "\nrc:\n" << state.rc << std::endl;
 
         params.mu = ((state.x.transpose() * state.s) / LP_data.n).coeff(0);
         std::cout << "mu: " << params.mu << std::endl;
@@ -239,7 +239,7 @@ void Primal_Dual_MPC (LP LP_data, State &state, Parameters &params)
         /* optimality check */
         if(std::max({params.mu, state.rp.norm(), state.rd.norm()}) <= TOL)
         {
-            std::cout << "LP is optimal." << std::endl;
+            std::cout << "\nLP is optimal." << std::endl;
             break;
         }
 
