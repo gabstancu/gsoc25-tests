@@ -1,0 +1,3 @@
+/Users/gabrielastancu/Documents/gsoc25/test-project/build/CMakeFiles/test-project.dir
+/Users/gabrielastancu/Documents/gsoc25/test-project/build/CMakeFiles/edit_cache.dir
+/Users/gabrielastancu/Documents/gsoc25/test-project/build/CMakeFiles/rebuild_cache.dir
