@@ -1,6 +1,6 @@
-CMakeFiles/test-project.dir/src/IPM.cpp.o: \
-  /Users/gabrielastancu/Documents/gsoc25/test-project/src/IPM.cpp \
-  /Users/gabrielastancu/Documents/gsoc25/test-project/include/IPM.hpp \
+CMakeFiles/ipm.dir/src/main.cpp.o: \
+  /Users/gabrielastancu/Documents/gsoc25/test-project/src/main.cpp \
+  /Users/gabrielastancu/Documents/gsoc25/test-project/src/../include/IPM.hpp \
   /opt/homebrew/opt//eigen/include/eigen3/Eigen/Eigen \
   /opt/homebrew/opt//eigen/include/eigen3/Eigen/Dense \
   /opt/homebrew/opt//eigen/include/eigen3/Eigen/Core \

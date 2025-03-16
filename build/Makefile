@@ -117,24 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named test-project
+# Target rules for targets named ipm
 
 # Build rule for target.
-test-project: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test-project
-.PHONY : test-project
+ipm: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ipm
+.PHONY : ipm
 
 # fast build rule for target.
-test-project/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test-project.dir/build.make CMakeFiles/test-project.dir/build
-.PHONY : test-project/fast
+ipm/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ipm.dir/build.make CMakeFiles/ipm.dir/build
+.PHONY : ipm/fast
 
 src/IPM.o: src/IPM.cpp.o
 .PHONY : src/IPM.o
 
 # target to build an object file
 src/IPM.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test-project.dir/build.make CMakeFiles/test-project.dir/src/IPM.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ipm.dir/build.make CMakeFiles/ipm.dir/src/IPM.cpp.o
 .PHONY : src/IPM.cpp.o
 
 src/IPM.i: src/IPM.cpp.i
@@ -142,7 +142,7 @@ src/IPM.i: src/IPM.cpp.i
 
 # target to preprocess a source file
 src/IPM.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test-project.dir/build.make CMakeFiles/test-project.dir/src/IPM.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ipm.dir/build.make CMakeFiles/ipm.dir/src/IPM.cpp.i
 .PHONY : src/IPM.cpp.i
 
 src/IPM.s: src/IPM.cpp.s
@@ -150,7 +150,7 @@ src/IPM.s: src/IPM.cpp.s
 
 # target to generate assembly for a file
 src/IPM.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test-project.dir/build.make CMakeFiles/test-project.dir/src/IPM.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ipm.dir/build.make CMakeFiles/ipm.dir/src/IPM.cpp.s
 .PHONY : src/IPM.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -158,7 +158,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test-project.dir/build.make CMakeFiles/test-project.dir/src/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ipm.dir/build.make CMakeFiles/ipm.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -166,7 +166,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test-project.dir/build.make CMakeFiles/test-project.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ipm.dir/build.make CMakeFiles/ipm.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -174,7 +174,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test-project.dir/build.make CMakeFiles/test-project.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ipm.dir/build.make CMakeFiles/ipm.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 # Help Target
@@ -185,7 +185,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... test-project"
+	@echo "... ipm"
 	@echo "... src/IPM.o"
 	@echo "... src/IPM.i"
 	@echo "... src/IPM.s"
