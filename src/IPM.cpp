@@ -98,7 +98,7 @@ void read_problem(const std::string filepath, LP &LP_data)
 
 void initialize_algorithm (LP LP_data, State &state)
 {
-    /* computing starting point using Mehrotra's heuristic */
+    /* comp. starting point using Mehrotra's heuristic */
     Eigen::MatrixXd H = LP_data.A * LP_data.A_T;
     Eigen::VectorXd x_ = LP_data.A_T * H.inverse() * LP_data.b;
     Eigen::VectorXd y_ = H.inverse() * LP_data.A * LP_data.c;
@@ -114,24 +114,27 @@ void initialize_algorithm (LP LP_data, State &state)
     state.x = x_ + dx_ * state.e;
     state.y = y_;
     state.s = s_ + ds_ * state.e;
-    // std::cout << "starting point:" << std::endl;
-    // std::cout << "x\n" << state.x << std::endl; 
-    // std::cout << "y\n" << state.y << std::endl; 
-    // std::cout << "s\n" << state.s << std::endl; 
+
+    std::cout << "\nstarting point:" << std::endl;
+    std::cout << "\nx\n" << state.x << std::endl; 
+    std::cout << "\ny\n" << state.y << std::endl; 
+    std::cout << "\ns\n" << state.s << std::endl; 
 }
 
 
 void predictor_step (LP LP_data, State &state, Parameters &params)
 {
-    state.rhs = state.rp + LP_data.A * state.S_inv * (-state.rc + state.X * state.rd);;
+    std::cout << "*************** predictor step ***************" << std::endl;
+    state.rhs = state.rp + LP_data.A * state.S_inv * (-state.rc + state.X * state.rd);
+    std::cout << "\nrhs:\n" << state.rhs << std::endl; 
 
     state.Dy_p = state.M_inv * state.rhs;
     state.Ds_p = state.rd - LP_data.A_T * state.Dy_p;
     state.Dx_p = state.S_inv * (state.rc - state.X * state.Ds_p);
 
-    // std::cout << "\nDy_p:\n" << state.Dy_p << std::endl; 
-    // std::cout << "Ds_p:\n" << state.Ds_p << std::endl;
-    // std::cout << "Dx_p:\n" << state.Dx_p << std::endl;
+    std::cout << "\nDy_p:\n" << state.Dy_p << std::endl; 
+    std::cout << "Ds_p:\n" << state.Ds_p << std::endl;
+    std::cout << "Dx_p:\n" << state.Dx_p << std::endl;
 
 
     // calculate alpha for both the primal and the dual problem
@@ -157,20 +160,27 @@ void predictor_step (LP LP_data, State &state, Parameters &params)
     else 
         params.alpha_d_p = 1.0;
     
-    // std::cout << "\nalpha_primal_p: " << params.alpha_p_p << " alpha_dual_p: " << params.alpha_d_p << std::endl;
+    std::cout << "\nalpha_primal_p: " << params.alpha_p_p << " alpha_dual_p: " << params.alpha_d_p << std::endl;
 }
 
 
 void corrector_step (LP LP_data, State &state, Parameters &params)
-{
+{   
+    std::cout << "*************** corrector step ***************" << std::endl;
     state.e = Eigen::VectorXd::Ones(state.rc.size());
 
     state.rc = state.rc - params.sigma * params.mu * state.e + state.Dx_p.asDiagonal() * state.Ds_p;
     state.rhs = state.rp + LP_data.A * state.S_inv * (-state.rc + state.X * state.rd);
+    std::cout << "\nrc:\n" << state.rc << std::endl; 
+    std::cout << "rhs:\n" << state.rhs << std::endl;
 
     state.Dy = state.M_inv * state.rhs;
     state.Ds = state.rd - LP_data.A_T * state.Dy;
     state.Dx = state.S_inv * (state.rc - state.X * state.Ds);
+
+    std::cout << "\nDy:\n" << state.Dy << std::endl; 
+    std::cout << "Ds:\n" << state.Ds << std::endl;
+    std::cout << "Dx:\n" << state.Dx << std::endl;
 
     // calc. primal and dual steps
     params.eta = std::max(0.995, 1 - params.mu);
@@ -197,6 +207,8 @@ void corrector_step (LP LP_data, State &state, Parameters &params)
         params.alpha_d = std::min(1.0, params.eta * *std::min_element(s_Ds.begin(), s_Ds.end()));
     else
         params.alpha_d = 1.0;
+    
+    std::cout << "\nalpha_primal: " << params.alpha_p << " alpha_dual: " << params.alpha_d << std::endl;
 }
 
 
@@ -205,7 +217,8 @@ void Primal_Dual_MPC (LP LP_data, State &state, Parameters &params)
     initialize_algorithm(LP_data, state);
 
     for (int i=0; i<MAX_ITERS; i++)
-    {
+    {   
+        std::cout << "------------------------------ iter. " << i+1 << " ------------------------------" << std::endl;
         /* set diagonals */
         state.X = state.x.asDiagonal();
         state.S = state.s.asDiagonal();
@@ -216,7 +229,12 @@ void Primal_Dual_MPC (LP LP_data, State &state, Parameters &params)
         state.rp = LP_data.A * state.x - LP_data.b;
         state.rc = state.X * state.s;
 
+        std::cout << "\nrd:\n" << state.rd << std::endl; 
+        std::cout << "rp:\n" << state.rp << std::endl;
+        std::cout << "rc:\n" << state.rc << std::endl;
+
         params.mu = ((state.x.transpose() * state.s) / LP_data.n).coeff(0);
+        std::cout << "mu: " << params.mu << std::endl;
 
         /* optimality check */
         if(std::max({params.mu, state.rp.norm(), state.rd.norm()}) <= TOL)
