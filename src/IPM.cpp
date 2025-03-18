@@ -19,57 +19,34 @@ void read_problem(const std::string filepath, LP &LP_data)
     }
 
     // get num_vars and num_ctrs
+    std::istringstream iss(lines[0]);
     std::string num;
     std::vector<int> v;
-    for(int i=0; i<lines[0].size(); i++)
-    {   
-        if(lines[0][i]==' ')
-        {   
-            v.push_back(std::stoi(num));
-            num = "";
-            continue;
-        }
-        num+=lines[0][i];
-    }
 
-    num = "";
-
+    while (iss >> num) v.push_back(std::stoi(num));
     int num_vars = v[0];
     int num_ctrs = v[1];
+    
     LP_data.A.resize(num_ctrs, num_vars);
     LP_data.b.resize(num_ctrs, 1);
     LP_data.c.resize(num_vars, 1);
+    v.clear();
 
-    int index = 0;
     // coefficients line
-    for(int i=0; i<lines[1].size(); i++)
-    {
-        if(lines[1][i]==' ')
-        {   
-            LP_data.c(index++, 0) = std::stoi(num);
-            num = "";
-            continue;
-        }
-        num+=lines[1][i];
+    iss = std::istringstream(lines[1]);
+    while (iss >> num) v.push_back(std::stoi(num));
+    for (size_t i=0; i<v.size(); i++)
+    {   std::cout << v[i] << " ";
+        LP_data.c(i, 0) = v[i];
     }
     
     // constraints lines
     std::vector<int> m;
-    for(int i = 2; i<lines.size(); i++)
+    for(size_t i = 2; i<lines.size(); i++)
     {
-        for(int j=0; j<lines[i].size(); j++)
-        {  
-            if(lines[i][j]==' ')
-            {   
-                m.push_back(std::stoi(num));
-                num = "";
-                continue;
-            }
-            num+=lines[i][j];
-
-        }
+        iss = std::istringstream(lines[i]);
+        while (iss >> num) m.push_back(std::stoi(num));
     }
-
 
     int step = 0;
     int b_index = 0;

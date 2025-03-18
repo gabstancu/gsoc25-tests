@@ -4,11 +4,12 @@
 #include "Eigen/Eigen"
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <cmath>
 #include <algorithm>
 
 #define TOL 1e-7
-#define MAX_ITERS 5
+#define MAX_ITERS 3
 
 struct State{
     Eigen::VectorXd x, y, s;
