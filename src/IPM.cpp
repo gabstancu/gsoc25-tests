@@ -36,7 +36,7 @@ void read_problem(const std::string filepath, LP &LP_data)
     iss = std::istringstream(lines[1]);
     while (iss >> num) v.push_back(std::stoi(num));
     for (size_t i=0; i<v.size(); i++)
-    {   std::cout << v[i] << " ";
+    {   //std::cout << v[i] << " ";
         LP_data.c(i, 0) = v[i];
     }
     
