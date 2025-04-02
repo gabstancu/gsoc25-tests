@@ -3,7 +3,7 @@
 
 // initializes a random n-dimensional cube: (-1, 1)^n by default
 // initializes lower and upper bounds, a and b
-void init_cube (int n, Eigen::VectorXd& a, Eigen::VectorXd& b) 
+void init_cube (int n, Eigen::VectorXd& a, Eigen::VectorXd& b, Eigen::VectorXd& c) 
 {
     std:: cout << "Cube dimension: " << n << std::endl;
     a.resize(n);
@@ -14,15 +14,23 @@ void init_cube (int n, Eigen::VectorXd& a, Eigen::VectorXd& b)
         a(i) = -1.0;
         b(i) = 1.0;
     }
+
+    // calc. origin
+    c = (a + b) / 2.0;
 }
 
-double expected_dist_from_origin (int n, int N, double step, Eigen::VectorXd a, Eigen::VectorXd b,  Eigen::MatrixXd X)
+double expected_dist_from_origin (int N, Eigen::MatrixXd X, Eigen::VectorXd c)
 {
     double dist = 0.0;
 
+    for (int i = 0; i<N; i++)
+    {
+        Eigen::VectorXd x = X.row(i);
+        dist += (x - c).norm(); // euclidean 
+    }
 
 
-    return dist;
+    return dist / N;
 }
 
 // a: lower bounds
@@ -66,8 +74,7 @@ void sample_n_cube (int n, int N, double step, Eigen::VectorXd a, Eigen::VectorX
             std::uniform_int_distribution<> grid_index(0, int(grid.size()) - 1);
             int grid_idx = grid_index(gen);
             x[j] = grid[grid_idx];
-            X.row(i) = x;
-            
+            X.row(i) = x; 
         }
     }
 }

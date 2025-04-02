@@ -4,18 +4,22 @@
 int main() 
 {
 
-    int n = 5;
-    int N = 1000;
+    int n = 50;
+    int N = 10000;
     double step = 0.25;
 
     Eigen::VectorXd a; // lower bounds
     Eigen::VectorXd b; // upper bounds
+    Eigen::VectorXd c; // origin
     Eigen::MatrixXd X; // points generated X(N, n)
 
-    init_cube(n, a, b);
+    init_cube(n, a, b, c);
     sample_n_cube(n, N, step, a, b, X);
 
-    std::cout << X << "\n";
+    std::cout << expected_dist_from_origin(N, X, c) << "\n";
+
+    // std::cout << c << "\n";
+    // std::cout << X << "\n";
 
     // LP LP_data;
     // State state;

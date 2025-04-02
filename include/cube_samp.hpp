@@ -10,7 +10,9 @@
 #include <random>
 
 
-void init_cube (int n, Eigen::VectorXd& a, Eigen::VectorXd& b);
+void init_cube (int n, Eigen::VectorXd& a, Eigen::VectorXd& b, Eigen::VectorXd& c);
+
+double expected_dist_from_origin (int N, Eigen::MatrixXd X, Eigen::VectorXd c);
 
 void sample_n_cube (int n, int N, double step, Eigen::VectorXd a, Eigen::VectorXd b, Eigen::MatrixXd& X);
 
