@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/gabrielastancu/Documents/gsoc25/test-project/src/IPM.cpp" "CMakeFiles/test-project.dir/src/IPM.cpp.o" "gcc" "CMakeFiles/test-project.dir/src/IPM.cpp.o.d"
-  "/Users/gabrielastancu/Documents/gsoc25/test-project/src/main.cpp" "CMakeFiles/test-project.dir/src/main.cpp.o" "gcc" "CMakeFiles/test-project.dir/src/main.cpp.o.d"
+  "/Users/gabrielastancu/Documents/gsoc25/test-project/src/cube_samp.cpp" "CMakeFiles/test.dir/src/cube_samp.cpp.o" "gcc" "CMakeFiles/test.dir/src/cube_samp.cpp.o.d"
+  "/Users/gabrielastancu/Documents/gsoc25/test-project/src/main.cpp" "CMakeFiles/test.dir/src/main.cpp.o" "gcc" "CMakeFiles/test.dir/src/main.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

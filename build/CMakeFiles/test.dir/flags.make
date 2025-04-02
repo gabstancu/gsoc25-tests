@@ -6,7 +6,7 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/Users/gabrielastancu/libs/volesti/external -I/opt/homebrew/opt/boost/include -I/opt/homebrew/opt/lp_solve/include -I/opt/homebrew/include -I/Users/gabrielastancu/libs/ifopt/ifopt_core/include -I/Users/gabrielastancu/libs/ifopt/ifopt_ipopt/include -I/opt/homebrew/opt/gmp/include -I/Users/gabrielastancu/Documents/gsoc25/test-project/include
 
-CXX_FLAGSarm64 = -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk
+CXX_FLAGSarm64 = -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -mmacosx-version-min=15.3
 
-CXX_FLAGS = -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk
+CXX_FLAGS = -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -mmacosx-version-min=15.3
 

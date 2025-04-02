@@ -1,3 +1,3 @@
-/Users/gabrielastancu/Documents/gsoc25/test-project/build/CMakeFiles/ipm.dir
+/Users/gabrielastancu/Documents/gsoc25/test-project/build/CMakeFiles/test.dir
 /Users/gabrielastancu/Documents/gsoc25/test-project/build/CMakeFiles/edit_cache.dir
 /Users/gabrielastancu/Documents/gsoc25/test-project/build/CMakeFiles/rebuild_cache.dir

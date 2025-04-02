@@ -117,48 +117,48 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named ipm
+# Target rules for targets named test
 
 # Build rule for target.
-ipm: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ipm
-.PHONY : ipm
+test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test
+.PHONY : test
 
 # fast build rule for target.
-ipm/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ipm.dir/build.make CMakeFiles/ipm.dir/build
-.PHONY : ipm/fast
+test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
+.PHONY : test/fast
 
-src/IPM.o: src/IPM.cpp.o
-.PHONY : src/IPM.o
+src/cube_samp.o: src/cube_samp.cpp.o
+.PHONY : src/cube_samp.o
 
 # target to build an object file
-src/IPM.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ipm.dir/build.make CMakeFiles/ipm.dir/src/IPM.cpp.o
-.PHONY : src/IPM.cpp.o
+src/cube_samp.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/cube_samp.cpp.o
+.PHONY : src/cube_samp.cpp.o
 
-src/IPM.i: src/IPM.cpp.i
-.PHONY : src/IPM.i
+src/cube_samp.i: src/cube_samp.cpp.i
+.PHONY : src/cube_samp.i
 
 # target to preprocess a source file
-src/IPM.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ipm.dir/build.make CMakeFiles/ipm.dir/src/IPM.cpp.i
-.PHONY : src/IPM.cpp.i
+src/cube_samp.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/cube_samp.cpp.i
+.PHONY : src/cube_samp.cpp.i
 
-src/IPM.s: src/IPM.cpp.s
-.PHONY : src/IPM.s
+src/cube_samp.s: src/cube_samp.cpp.s
+.PHONY : src/cube_samp.s
 
 # target to generate assembly for a file
-src/IPM.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ipm.dir/build.make CMakeFiles/ipm.dir/src/IPM.cpp.s
-.PHONY : src/IPM.cpp.s
+src/cube_samp.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/cube_samp.cpp.s
+.PHONY : src/cube_samp.cpp.s
 
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ipm.dir/build.make CMakeFiles/ipm.dir/src/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -166,7 +166,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ipm.dir/build.make CMakeFiles/ipm.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -174,7 +174,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ipm.dir/build.make CMakeFiles/ipm.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 # Help Target
@@ -185,10 +185,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... ipm"
-	@echo "... src/IPM.o"
-	@echo "... src/IPM.i"
-	@echo "... src/IPM.s"
+	@echo "... test"
+	@echo "... src/cube_samp.o"
+	@echo "... src/cube_samp.i"
+	@echo "... src/cube_samp.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

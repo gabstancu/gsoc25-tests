@@ -4,7 +4,6 @@ project(test-project)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-
 include_directories(
     $ENV{HOME}/libs/volesti/include
     $ENV{HOME}/libs/volesti/external
@@ -30,6 +29,6 @@ find_package(Boost REQUIRED)
 find_package(Eigen3 REQUIRED NO_MODULE)
 find_library(LPSOLVE_LIB lpsolve55 PATHS $ENV{HOME}/libs/lp_solve/lib $ENV{LIBRARY_PATH})
 
-add_executable(ipm src/IPM.cpp src/main.cpp)
+add_executable(test src/cube_samp.cpp src/main.cpp)
 
-target_link_libraries(ipm ${LPSOLVE_LIB})
+target_link_libraries(test ${LPSOLVE_LIB})
