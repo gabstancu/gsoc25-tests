@@ -5,6 +5,8 @@
 #include "cartesian_geom/cartesian_kernel.h"
 #include "convex_bodies/hpolytope.h"
 #include "generators/known_polytope_generators.h"
+#include "generators/boost_random_number_generator.hpp"
+#include "random_walks/boundary_rdhr_walk.hpp"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -119,7 +121,7 @@ std::pair<double, std::vector<Eigen::SparseVector<double>>> sample_n_cube_sparse
 HPolytopeType init_cube_volesti (int n, Eigen::VectorXd& a, Eigen::VectorXd& b, Eigen::VectorXd& c);
 
 
-void volesti_samp (int n, int N, double step, const Eigen::VectorXd& a, const Eigen::VectorXd& b);
+void volesti_samp (int n, int N, int walk_len, HPolytopeType cube, Eigen::VectorXd starting_point);
 
 
 #endif // CUBE_SAMP_HPP

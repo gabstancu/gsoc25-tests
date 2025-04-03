@@ -183,7 +183,24 @@ HPolytopeType init_cube_volesti (int n, Eigen::VectorXd& a, Eigen::VectorXd& b, 
 
 
 
-void volesti_samp (int n, int N, double step, const Eigen::VectorXd a, const Eigen::VectorXd b)
+void volesti_samp (int n, int N, int walk_len, HPolytopeType cube, Eigen::VectorXd starting_point)
 {
-    
+    typedef BoostRandomNumberGenerator<boost::mt19937, double> RNGType;
+    RNGType rng(n);
+
+    std::vector<Point> samples;
+
+    /* add this as a parameter to the function */
+    Point p(n), p1, p2;
+    for (int i=0; i<n; ++i) p.set_coord(i, starting_point(i));
+    // p.print();
+
+    BRDHRWalk::Walk<HPolytopeType, RNGType> walk(cube, p, rng);
+
+    for (int i=0; i<N; i++)
+    {
+        walk.apply(cube, p1, p2, walk_len, rng);
+        samples.push_back(p2);
+        p2.print();
+    }
 }
